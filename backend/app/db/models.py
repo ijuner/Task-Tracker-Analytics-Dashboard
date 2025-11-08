@@ -10,7 +10,7 @@ class Task(Base):
     title = Column(String, nullable=False)
     description = Column(String)
     status = Column(String, default="todo")  # todo, in-progress, done
-    priority = Column(String, default="medium")  # low, medium, high ✅ 新增
+    priority = Column(String, default="medium")  # low, medium, high 
     completed = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     completed_at = Column(DateTime, nullable=True)

@@ -1,6 +1,6 @@
 
 def test_register_and_login(client):
-    # 注册用户
+    # register user
     response = client.post("/auth/register", json={
         "email": "test@example.com",
         "password": "test123"
@@ -9,7 +9,7 @@ def test_register_and_login(client):
     user = response.json()
     assert user["email"] == "test@example.com"
 
-    # 登录用户
+    # login user
     response = client.post("/auth/login", json={
         "email": "test@example.com",
         "password": "test123"

@@ -16,4 +16,4 @@ class UserOut(BaseModel):
     created_at: datetime
 
     class Config:
-        from_attributes = True  # Pydantic v2 的 ORM 转换
+        from_attributes = True  # Pydantic v2 compatibility

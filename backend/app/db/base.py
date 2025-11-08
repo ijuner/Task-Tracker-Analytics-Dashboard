@@ -1,4 +1,4 @@
-from app.db.models import Task, User  # ✅ 添加 User
+from app.db.models import Task, User  
 from app.db.session import engine
 from sqlalchemy.orm import declarative_base
 

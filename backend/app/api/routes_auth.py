@@ -8,7 +8,7 @@ from app.core.security import get_password_hash, verify_password, create_access_
 
 router = APIRouter()
 
-# ✅ 注册接口
+# register user
 @router.post("/register", response_model=UserOut)
 def register_user(user: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.email == user.email).first()
@@ -21,7 +21,7 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(new_user)
     return new_user
 
-# ✅ 登录接口
+# login user
 @router.post("/login")
 def login_user(user: UserLogin, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.email == user.email).first()
@@ -29,7 +29,7 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     token = create_access_token(data={"sub": str(db_user.id)})
     return {"access_token": token, "token_type": "bearer"}
-# ✅ 获取当前用户信息
+# get current user
 @router.get("/me", response_model=UserOut)
 def get_me(current_user: User = Depends(get_current_user)):
     return current_user

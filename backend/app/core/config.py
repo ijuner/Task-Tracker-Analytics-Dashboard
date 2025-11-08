@@ -5,10 +5,10 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Task Tracker & Analytics Dashboard"
     API_VERSION: str = "v1"
 
-    # CORS 设置
+    # CORS settings
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]
 
-    # 数据库配置
+    # Database settings
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
@@ -22,5 +22,5 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
 
-# ✅ 这行非常关键，确保 main.py 能正确导入
+# Instantiate settings
 settings = Settings()

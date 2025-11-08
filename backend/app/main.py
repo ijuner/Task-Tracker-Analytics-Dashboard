@@ -12,11 +12,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
-init_db()  # 启动时自动创建表（仅开发环境使用）
+init_db()  # initialize the database
 
 # test
 print(settings.PROJECT_NAME) 
-print("✅ 数据库连接成功：", engine)
+print("db connect successfully：", engine)
 
 # CORS configuration
 app.add_middleware(
@@ -27,12 +27,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 路由注册
+# register routers
 app.include_router(routes_auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(routes_tasks.router, prefix="/tasks", tags=["Tasks"])
 app.include_router(routes_stats.router, prefix="/stats", tags=["Stats"])
 
-# 健康检查
+# health check
 @app.get("/health", tags=["System"])
 def health_check():
     return {"status": "ok"}
