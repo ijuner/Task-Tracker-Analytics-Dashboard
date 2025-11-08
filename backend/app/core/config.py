@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+
 from typing import List
 
 class Settings(BaseSettings):
@@ -19,11 +20,13 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
 
-    from fastapi.security import OAuth2PasswordBearer
-    oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
     class Config:
         env_file = ".env"
 
 # Instantiate settings
 settings = Settings()
+
+
+
+
